@@ -1,0 +1,11 @@
+# Robots.txt para AutoTech
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /dist/
+
+Sitemap: https://auto-tech-three.vercel.app/sitemap.xml
+
+# Reglas específicas
+User-agent: Googlebot
+Allow: /
