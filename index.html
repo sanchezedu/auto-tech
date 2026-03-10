@@ -4,6 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoTech - Servicio Automotriz Premium</title>
+    <meta name="description" content="AutoTech - Servicio automotriz premium en Guayaquil. Mecánica general, cambio de aceite, eléctrico, alineación y más. Atención rápida con garantía. ¡Agenda tu cita hoy!">
+    <meta name="keywords" content="servicio automotriz, mecánica automotriz, cambio de aceite, alineación, Guayaquil, Ecuador, taller mecánico">
+    <meta name="author" content="AutoTech">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AutoTech - Servicio Automotriz Premium">
+    <meta property="og:description" content="Servicio automotriz de primera categoría en Guayaquil. Mecánica general, cambio de aceite, eléctrico y más.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://auto-tech-three.vercel.app">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200">
+    <meta property="og:site_name" content="AutoTech">
+    <meta property="og:locale" content="es_EC">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AutoTech - Servicio Automotriz Premium">
+    <meta name="twitter:description" content="Servicio automotriz de primera categoría en Guayaquil. ¡Agenda tu cita hoy!">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "AutoTech",
+        "description": "Servicio automotriz de primera categoría",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Guayaquil",
+            "addressCountry": "EC"
+        },
+        "telephone": "+593999999999",
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 08:00-18:00",
+        "image": "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200"
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -33,7 +72,7 @@
         .stat-number { font-size: 42px; font-weight: 800; }
         .stat-label { font-size: 12px; color: #888; text-transform: uppercase; }
         .hero-image { flex: 1; }
-        .hero-image img { width: 100%; max-width: 500px; border-radius: 20px; }
+        .hero-image img { width: 100%; max-width: 500px; border-radius: 20px; loading: lazy; }
         
         /* Services */
         .services { padding: 100px 0; background: #0a0a0a; }
@@ -74,6 +113,25 @@
             .hero-image { display: none; }
             .hero-stats { justify-content: center; }
         }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float i { color: white; font-size: 28px; }
     </style>
 </head>
 <body>
@@ -100,7 +158,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600" alt="Auto Service">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600" alt="Auto Service">
             </div>
         </div>
     </section>
@@ -111,42 +169,42 @@
             <p>Soluciones integrales para tu vehículo</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=400" alt="Mecánica">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=400" alt="Mecánica">
                     <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Mecánica General</h3>
                     <p>Diagnóstico completo y reparación.</p>
                     <div class="service-price">Desde $80</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Aceite">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Aceite">
                     <div class="service-icon"><i class="fas fa-oil-can"></i></div>
                     <h3>Cambio de Aceite</h3>
                     <p>Lubricantes premium garantizados.</p>
                     <div class="service-price">Desde $25</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=400" alt="Eléctrico">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=400" alt="Eléctrico">
                     <div class="service-icon"><i class="fas fa-car-battery"></i></div>
                     <h3>Eléctrico</h3>
                     <p>Baterías, alternador y más.</p>
                     <div class="service-price">Desde $50</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=400" alt="Alineación">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=400" alt="Alineación">
                     <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
                     <h3>Alineación</h3>
                     <p>Computarizada y balanceo.</p>
                     <div class="service-price">Desde $35</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=400" alt="Aire">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=400" alt="Aire">
                     <div class="service-icon"><i class="fas fa-snowflake"></i></div>
                     <h3>Aire Acondicionado</h3>
                     <p>Recarga y mantenimiento.</p>
                     <div class="service-price">Desde $60</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400" alt="Frenos">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400" alt="Frenos">
                     <div class="service-icon"><i class="fas fa-screwdriver"></i></div>
                     <h3>Frenos</h3>
                     <p>Pastillas, discos y líquido.</p>
@@ -160,22 +218,22 @@
         <div class="container">
             <div class="features-grid">
                 <div class="feature-item">
-                    <img src="https://images.unsplash.com/photo-1619641805634-98e5c6833645?w=200" alt="Rápido">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1619641805634-98e5c6833645?w=200" alt="Rápido">
                     <div class="feature-icon"><i class="fas fa-clock"></i></div>
                     <div><h4 style="font-size:15px;">Atención Rápida</h4><p style="color:#888;font-size:13px;">Servicio en tiempo record</p></div>
                 </div>
                 <div class="feature-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200" alt="Garantía">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200" alt="Garantía">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <div><h4 style="font-size:15px;">Garantía Total</h4><p style="color:#888;font-size:13px;">En todos los servicios</p></div>
                 </div>
                 <div class="feature-item">
-                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=200" alt="Tecnología">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=200" alt="Tecnología">
                     <div class="feature-icon"><i class="fas fa-tools"></i></div>
                     <div><h4 style="font-size:15px;">Tecnología de Punta</h4><p style="color:#888;font-size:13px;">Equipo moderno</p></div>
                 </div>
                 <div class="feature-item">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1ddd7228f2?w=200" alt="Expertos">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1ddd7228f2?w=200" alt="Expertos">
                     <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
                     <div><h4 style="font-size:15px;">Expertos Certificados</h4><p style="color:#888;font-size:13px;">Personal capacitado</p></div>
                 </div>
@@ -224,5 +282,10 @@
             <div class="footer-bottom">© 2026 AutoTech. Todos los derechos reservados.</div>
         </div>
     </footer>
+    
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/593999999999" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 </html>
