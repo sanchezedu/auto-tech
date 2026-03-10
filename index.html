@@ -3,161 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoTech - Servicio automotriz premium en Guayaquil">
-    <title>AutoTech - Servicio Automotriz Premium v3</title>
+    <title>AutoTech - Servicio Automotriz Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        :root { --primary: #e63946; --primary-dark: #c1121f; --accent: #f4a261; --dark: #0a0a0a; --gray: #6c757d; --light: #f8f9fa; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Outfit', sans-serif; background: var(--dark); color: white; line-height: 1.7; overflow-x: hidden; }
+        body { font-family: 'Outfit', sans-serif; background: #0a0a0a; color: white; line-height: 1.7; }
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-        .c { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
-        .sec { padding: 100px 0; }
         
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 50px; cursor: pointer; transition: all 0.3s; border: none; text-decoration: none; }
-        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; box-shadow: 0 10px 30px rgba(230,57,70,0.4); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(230,57,70,0.5); }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
         
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.3s; }
-        .header.scrolled { background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); padding: 12px 0; }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        /* Header */
+        header { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); padding: 15px 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #e63946, #f4a261); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        nav { display: flex; gap: 25px; align-items: center; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        .btn { background: #e63946; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; }
         
-        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -30%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(230,57,70,0.15) 0%, transparent 70%); }
-        .hero-content { position: relative; z-index: 2; max-width: 550px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 50px; color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 25px; }
-        .hero h1 { font-size: clamp(40px, 7vw, 75px); line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 35px; }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+        .hero .container { display: flex; align-items: center; gap: 50px; }
+        .hero-content { flex: 1; }
+        .hero h1 { font-size: clamp(40px, 6vw, 70px); line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: #e63946; }
+        .hero p { font-size: 18px; color: #aaa; margin-bottom: 30px; }
         .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
-        .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 800; }
-        .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .stat-number { font-size: 42px; font-weight: 800; }
+        .stat-label { font-size: 12px; color: #888; text-transform: uppercase; }
+        .hero-image { flex: 1; }
+        .hero-image img { width: 100%; max-width: 500px; border-radius: 20px; }
         
-        .hero-image { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 45%; max-width: 500px; z-index: 2; }
-        
-        .section-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 15px; }
-        .section-subtitle { font-size: 17px; color: var(--gray); margin-bottom: 50px; }
-        
+        /* Services */
+        .services { padding: 100px 0; background: #0a0a0a; }
+        .services h2 { font-size: 42px; text-align: center; margin-bottom: 15px; }
+        .services > .container > p { text-align: center; color: #888; margin-bottom: 50px; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .service-card { background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; transition: all 0.4s; }
-        .service-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .service-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; }
         .service-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; margin-bottom: 20px; }
-        .service-icon { width: 60px; height: 60px; background: linear-gradient(135deg, rgba(230,57,70,0.2), rgba(244,162,97,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--primary); margin-bottom: 20px; }
+        .service-icon { width: 50px; height: 50px; background: rgba(230,57,70,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #e63946; font-size: 20px; margin-bottom: 15px; }
         .service-card h3 { font-size: 20px; margin-bottom: 10px; }
-        .service-card p { color: var(--gray); font-size: 14px; margin-bottom: 15px; }
-        .service-price { font-size: 24px; font-weight: 800; color: var(--accent); }
+        .service-card p { color: #888; font-size: 14px; margin-bottom: 15px; }
+        .service-price { font-size: 24px; font-weight: 700; color: #f4a261; }
         
+        /* Features */
+        .features { padding: 80px 0; background: #111; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .feature-item { display: flex; align-items: center; gap: 15px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 14px; }
         .feature-item img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-        .feature-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary), transparent); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 18px; }
-        .feature-text h4 { font-size: 15px; margin-bottom: 4px; }
-        .feature-text p { color: var(--gray); font-size: 13px; }
+        .feature-icon { width: 45px; height: 45px; background: #e63946; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
         
-        .cta-section { background: linear-gradient(135deg, var(--primary-dark), #1d3557); padding: 80px 0; text-align: center; }
+        /* CTA */
+        .cta { padding: 80px 0; background: linear-gradient(135deg, #c1121f, #1d3557); text-align: center; }
+        .cta h2 { font-size: 42px; margin-bottom: 15px; }
+        .cta p { margin-bottom: 30px; opacity: 0.9; }
+        .btn-white { background: white; color: #e63946; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; }
         
-        .footer { background: #050505; padding: 60px 0 25px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
-        .footer-brand p { color: var(--gray); margin: 15px 0; font-size: 14px; }
-        .social-links { display: flex; gap: 10px; }
-        .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; }
-        .social-link:hover { background: var(--primary); transform: translateY(-3px); }
+        /* Footer */
+        footer { background: #050505; padding: 60px 0 25px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-title { font-size: 16px; margin-bottom: 20px; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
-        .footer-links a:hover { color: var(--primary); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: var(--gray); font-size: 13px; margin-top: 40px; }
+        .footer-links a { color: #888; text-decoration: none; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: #666; margin-top: 40px; }
         
-        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        
-        @media(max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } .hero-image { display: none; } .hero-content { max-width: 100%; } }
-        @media(max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-image { display: none; }
+            .hero-stats { justify-content: center; }
+        }
     </style>
 </head>
 <body>
-    <header class="header" id="header">
-        <div class="c">
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-                <a href="#" class="logo"><div class="logo-icon"><i class="fas fa-wrench"></i></div>AUTO<span style="color:var(--primary)">TECH</span></a>
-                <nav style="display:flex;gap:25px;align-items:center;">
-                    <a href="#servicios" style="color:white;text-decoration:none;font-weight:500;font-size:14px;">Servicios</a>
-                    <a href="#contacto" class="btn btn-primary" style="padding:10px 24px;">Cotizar</a>
-                </nav>
-            </div>
+    <header>
+        <div class="container">
+            <a href="#" class="logo"><div class="logo-icon"><i class="fas fa-wrench"></i></div>AUTO<span style="color:#e63946">TECH</span></a>
+            <nav>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto" class="btn">Cotizar</a>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="c">
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-badge fade-up"><i class="fas fa-certificate"></i> Certificación ISO 9001</div>
-                <h1 class="fade-up">Expertos en <span>Mantenimiento</span> Vehicular</h1>
-                <p class="fade-up">Servicio automotriz de primera categoría con tecnología de vanguardia.</p>
-                <div class="fade-up" style="display:flex;gap:15px;flex-wrap:wrap;">
-                    <a href="#contacto" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Agendar</a>
-                    <a href="#servicios" class="btn" style="border:1px solid rgba(255,255,255,0.3);color:white;">Servicios</a>
-                </div>
-                <div class="hero-stats fade-up">
+                <h1>Expertos en <span>Mantenimiento</span> Vehicular</h1>
+                <p>Servicio automotriz de primera categoría con tecnología de vanguardia.</p>
+                <a href="#contacto" class="btn">Agendar Cita</a>
+                <div class="hero-stats">
                     <div><div class="stat-number">15+</div><div class="stat-label">Años</div></div>
                     <div><div class="stat-number">25K+</div><div class="stat-label">Clientes</div></div>
                     <div><div class="stat-number">98%</div><div class="stat-label">satisfacción</div></div>
                 </div>
             </div>
-            <div class="hero-image fade-up">
-                <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600" alt="Auto Service" style="width:100%;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,0.4);">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600" alt="Auto Service">
             </div>
         </div>
     </section>
 
-    <section class="sec" id="servicios" style="background:var(--dark);">
-        <div class="c">
-            <div class="tc" style="margin-bottom:50px;">
-                <h2 class="section-title fade-up">Nuestros Servicios</h2>
-                <p class="section-subtitle fade-up">Soluciones integrales para tu vehículo</p>
-            </div>
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <p>Soluciones integrales para tu vehículo</p>
             <div class="services-grid">
-                <div class="service-card fade-up">
-                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=400" alt="Mecanica">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=400" alt="Mecánica">
                     <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Mecánica General</h3>
                     <p>Diagnóstico completo y reparación.</p>
                     <div class="service-price">Desde $80</div>
                 </div>
-                <div class="service-card fade-up" style="animation-delay:0.1s">
+                <div class="service-card">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Aceite">
                     <div class="service-icon"><i class="fas fa-oil-can"></i></div>
                     <h3>Cambio de Aceite</h3>
                     <p>Lubricantes premium garantizados.</p>
                     <div class="service-price">Desde $25</div>
                 </div>
-                <div class="service-card fade-up" style="animation-delay:0.2s">
-                    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=400" alt="Electrico">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=400" alt="Eléctrico">
                     <div class="service-icon"><i class="fas fa-car-battery"></i></div>
                     <h3>Eléctrico</h3>
                     <p>Baterías, alternador y más.</p>
                     <div class="service-price">Desde $50</div>
                 </div>
-                <div class="service-card fade-up" style="animation-delay:0.3s">
-                    <img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=400" alt="Alineacion">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=400" alt="Alineación">
                     <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
                     <h3>Alineación</h3>
                     <p>Computarizada y balanceo.</p>
                     <div class="service-price">Desde $35</div>
                 </div>
-                <div class="service-card fade-up" style="animation-delay:0.4s">
+                <div class="service-card">
                     <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=400" alt="Aire">
                     <div class="service-icon"><i class="fas fa-snowflake"></i></div>
                     <h3>Aire Acondicionado</h3>
                     <p>Recarga y mantenimiento.</p>
                     <div class="service-price">Desde $60</div>
                 </div>
-                <div class="service-card fade-up" style="animation-delay:0.5s">
+                <div class="service-card">
                     <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400" alt="Frenos">
                     <div class="service-icon"><i class="fas fa-screwdriver"></i></div>
                     <h3>Frenos</h3>
@@ -168,68 +156,73 @@
         </div>
     </section>
 
-    <section class="sec" style="background:linear-gradient(180deg,var(--dark),#1a1a2e);">
-        <div class="c">
+    <section class="features">
+        <div class="container">
             <div class="features-grid">
-                <div class="feature-item fade-up">
-                    <img src="https://images.unsplash.com/photo-1619641805634-98e5c6833645?w=200" alt="Rapido">
-                    <div><div class="feature-icon"><i class="fas fa-clock"></i></div><div class="feature-text"><h4>Atención Rápida</h4><p>Servicio en tiempo record</p></div></div>
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1619641805634-98e5c6833645?w=200" alt="Rápido">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <div><h4 style="font-size:15px;">Atención Rápida</h4><p style="color:#888;font-size:13px;">Servicio en tiempo record</p></div>
                 </div>
-                <div class="feature-item fade-up" style="animation-delay:0.1s">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200" alt="Garantia">
-                    <div><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><div class="feature-text"><h4>Garantía Total</h4><p>En todos los servicios</p></div></div>
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200" alt="Garantía">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div><h4 style="font-size:15px;">Garantía Total</h4><p style="color:#888;font-size:13px;">En todos los servicios</p></div>
                 </div>
-                <div class="feature-item fade-up" style="animation-delay:0.2s">
-                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=200" alt="Tecnologia">
-                    <div><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-text"><h4>Tecnología de Punta</h4><p>Equipo moderno</p></div></div>
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=200" alt="Tecnología">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <div><h4 style="font-size:15px;">Tecnología de Punta</h4><p style="color:#888;font-size:13px;">Equipo moderno</p></div>
                 </div>
-                <div class="feature-item fade-up" style="animation-delay:0.3s">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1ddd7228f2?w=200" alt="Equipo">
-                    <div><div class="feature-icon"><i class="fas fa-user-tie"></i></div><div class="feature-text"><h4>Expertos Certificados</h4><p>Personal capacitado</p></div></div>
+                <div class="feature-item">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1ddd7228f2?w=200" alt="Expertos">
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                    <div><h4 style="font-size:15px;">Expertos Certificados</h4><p style="color:#888;font-size:13px;">Personal capacitado</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="contacto">
-        <div class="c">
-            <div class="tc">
-                <h2 class="fade-up" style="font-size:42px;margin-bottom:15px;">¿Listo para Servicio Premium?</h2>
-                <p class="fade-up" style="font-size:17px;opacity:0.9;margin-bottom:30px;">Agenda tu cita hoy</p>
-                <a href="#" class="btn fade-up" style="background:white;color:var(--primary);"><i class="fas fa-calendar-check"></i> Agendar Cita</a>
-            </div>
+    <section class="cta" id="contacto">
+        <div class="container">
+            <h2>¿Listo para Servicio Premium?</h2>
+            <p>Agenda tu cita hoy</p>
+            <a href="#" class="btn-white"><i class="fas fa-calendar-check"></i> Agendar Cita</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="c">
+    <footer>
+        <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo"><div class="logo-icon"><i class="fas fa-wrench"></i></div>AUTO<span style="color:var(--primary)">TECH</span></a>
-                    <p>Servicio automotriz de primera categoría.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div>
+                    <a href="#" class="logo"><div class="logo-icon"><i class="fas fa-wrench"></i></div>AUTO<span style="color:#e63946">TECH</span></a>
+                    <p style="color:#888;margin:15px 0;font-size:14px;">Servicio automotriz de primera categoría en Guayaquil.</p>
                 </div>
-                <div><h4 class="footer-title">Servicios</h4><ul class="footer-links"><li><a href="#">Mecánica</a></li><li><a href="#">Aceite</a></li><li><a href="#">Eléctrico</a></li></ul></div>
-                <div><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="#">Nosotros</a></li><li><a href="#">Equipo</a></li><li><a href="#">Contacto</a></li></ul></div>
-                <div><h4 class="footer-title">Contacto</h4><ul class="footer-links"><li><i class="fas fa-map-marker-alt"></i> Guayaquil</li><li><i class="fas fa-phone"></i> +593 99 999 9999</li></ul></div>
+                <div>
+                    <h4 class="footer-title">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Mecánica General</a></li>
+                        <li><a href="#">Cambio de Aceite</a></li>
+                        <li><a href="#">Eléctrico</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contacto</h4>
+                    <ul class="footer-links">
+                        <li style="color:#888"><i class="fas fa-map-marker-alt"></i> Guayaquil</li>
+                        <li style="color:#888"><i class="fas fa-phone"></i> +593 99 999 9999</li>
+                    </ul>
+                </div>
             </div>
             <div class="footer-bottom">© 2026 AutoTech. Todos los derechos reservados.</div>
         </div>
     </footer>
-
-    <script>
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
-        
-        const observer = new IntersectionObserver((e) => e.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.from('.hero-content > *', { duration: 1, y: 50, opacity: 0, stagger: 0.2, ease: 'power3.out' });
-    </script>
 </body>
 </html>
